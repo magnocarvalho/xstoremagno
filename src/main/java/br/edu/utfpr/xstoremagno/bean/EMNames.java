@@ -39,9 +39,9 @@ public class EMNames {
             String jdbc_database_username = System.getenv("JDBC_DATABASE_USERNAME");
             String jdbc_database_password = System.getenv("JDBC_DATABASE_PASSWORD");
 
-            properties.put("javax.persistence.jdbc.url", jdbc_database_url);
-            properties.put("javax.persistence.jdbc.user", jdbc_database_username);
-            properties.put("javax.persistence.jdbc.password", jdbc_database_password);
+            properties.put("javax.persistence.jdbc.url", "jdbc:postgresql://xlcfrjxjcnnphz:b8b2eb0c4103d89891e3b8aded05af85523146d71dac164510020e59ecc615e5@ec2-23-21-65-173.compute-1.amazonaws.com:5432/dc6d1hh34hakec");
+            properties.put("javax.persistence.jdbc.user", "xlcfrjxjcnnphz");
+            properties.put("javax.persistence.jdbc.password", "b8b2eb0c4103d89891e3b8aded05af85523146d71dac164510020e59ecc615e5");
             properties.put("javax.persistence.jdbc.driver", "org.postgresql.Driver"); // configurando driver para
                                                                                       // postgres
         }
