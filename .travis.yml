@@ -17,3 +17,5 @@ deploy:
     app: xstoremagno
   on:
     repo: magnocarvalho/xstoremagno
+  skip_cleanup: true
+  
