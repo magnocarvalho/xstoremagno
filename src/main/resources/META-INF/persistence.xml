@@ -8,7 +8,9 @@
     <class>br.edu.utfpr.xstoremagno.model.Funcionario</class>
     <class>br.edu.utfpr.xstoremagno.model.Itemcompra</class>
     <class>br.edu.utfpr.xstoremagno.model.Produto</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
-    <properties/>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
   </persistence-unit>
 </persistence>
