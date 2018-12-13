@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProdutoCreateDlg" widgetVar="ProdutoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateProdutoTitle}">
+            <h:form id="ProdutoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{produtoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_idproduto}" for="idproduto" />
+                        <p:inputText id="idproduto" value="#{produtoController.selected.idproduto}" title="#{bundle.CreateProdutoTitle_idproduto}" required="true" requiredMessage="#{bundle.CreateProdutoRequiredMessage_idproduto}"/>
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_codigoproduto}" for="codigoproduto" />
+                        <p:inputText id="codigoproduto" value="#{produtoController.selected.codigoproduto}" title="#{bundle.CreateProdutoTitle_codigoproduto}" />
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_criacaoproduto}" for="criacaoproduto" />
+                        <p:calendar id="criacaoproduto" pattern="MM/dd/yyyy HH:mm:ss" value="#{produtoController.selected.criacaoproduto}" title="#{bundle.EditProdutoTitle_criacaoproduto}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_custoproduto}" for="custoproduto" />
+                        <p:inputText id="custoproduto" value="#{produtoController.selected.custoproduto}" title="#{bundle.CreateProdutoTitle_custoproduto}" />
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_descricaoproduto}" for="descricaoproduto" />
+                        <p:inputText id="descricaoproduto" value="#{produtoController.selected.descricaoproduto}" title="#{bundle.CreateProdutoTitle_descricaoproduto}" />
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_maximoproduto}" for="maximoproduto" />
+                        <p:inputText id="maximoproduto" value="#{produtoController.selected.maximoproduto}" title="#{bundle.CreateProdutoTitle_maximoproduto}" />
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_minimoproduto}" for="minimoproduto" />
+                        <p:inputText id="minimoproduto" value="#{produtoController.selected.minimoproduto}" title="#{bundle.CreateProdutoTitle_minimoproduto}" />
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_quantidade}" for="quantidade" />
+                        <p:inputText id="quantidade" value="#{produtoController.selected.quantidade}" title="#{bundle.CreateProdutoTitle_quantidade}" />
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_vendaproduto}" for="vendaproduto" />
+                        <p:inputText id="vendaproduto" value="#{produtoController.selected.vendaproduto}" title="#{bundle.CreateProdutoTitle_vendaproduto}" />
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_categoriaproduto}" for="categoriaproduto" />
+                        <p:selectOneMenu id="categoriaproduto" value="#{produtoController.selected.categoriaproduto}" >
+                            <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"
+                                           var="categoriaprodutoItem"
+                                           itemValue="#{categoriaprodutoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateProdutoLabel_fornecedorproduto}" for="fornecedorproduto" />
+                        <p:selectOneMenu id="fornecedorproduto" value="#{produtoController.selected.fornecedorproduto}" >
+                            <f:selectItems value="#{fornecedorController.itemsAvailableSelectOne}"
+                                           var="fornecedorprodutoItem"
+                                           itemValue="#{fornecedorprodutoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produtoController.create}" value="#{bundle.Save}" update="display,:ProdutoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ProdutoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ProdutoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FornecedorCreateDlg" widgetVar="FornecedorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFornecedorTitle}">
+            <h:form id="FornecedorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fornecedorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_idfornecedor}" for="idfornecedor" />
+                        <p:inputText id="idfornecedor" value="#{fornecedorController.selected.idfornecedor}" title="#{bundle.CreateFornecedorTitle_idfornecedor}" required="true" requiredMessage="#{bundle.CreateFornecedorRequiredMessage_idfornecedor}"/>
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_bairro}" for="bairro" />
+                        <p:inputText id="bairro" value="#{fornecedorController.selected.bairro}" title="#{bundle.CreateFornecedorTitle_bairro}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_celularcontato}" for="celularcontato" />
+                        <p:inputText id="celularcontato" value="#{fornecedorController.selected.celularcontato}" title="#{bundle.CreateFornecedorTitle_celularcontato}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_cep}" for="cep" />
+                        <p:inputText id="cep" value="#{fornecedorController.selected.cep}" title="#{bundle.CreateFornecedorTitle_cep}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_cidade}" for="cidade" />
+                        <p:inputText id="cidade" value="#{fornecedorController.selected.cidade}" title="#{bundle.CreateFornecedorTitle_cidade}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_cnpjpessoajuridica}" for="cnpjpessoajuridica" />
+                        <p:inputText id="cnpjpessoajuridica" value="#{fornecedorController.selected.cnpjpessoajuridica}" title="#{bundle.CreateFornecedorTitle_cnpjpessoajuridica}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_complemento}" for="complemento" />
+                        <p:inputText id="complemento" value="#{fornecedorController.selected.complemento}" title="#{bundle.CreateFornecedorTitle_complemento}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_criacaofornecedor}" for="criacaofornecedor" />
+                        <p:calendar id="criacaofornecedor" pattern="MM/dd/yyyy HH:mm:ss" value="#{fornecedorController.selected.criacaofornecedor}" title="#{bundle.EditFornecedorTitle_criacaofornecedor}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_emailcontato}" for="emailcontato" />
+                        <p:inputText id="emailcontato" value="#{fornecedorController.selected.emailcontato}" title="#{bundle.CreateFornecedorTitle_emailcontato}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_endereco}" for="endereco" />
+                        <p:inputText id="endereco" value="#{fornecedorController.selected.endereco}" title="#{bundle.CreateFornecedorTitle_endereco}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_estado}" for="estado" />
+                        <p:inputText id="estado" value="#{fornecedorController.selected.estado}" title="#{bundle.CreateFornecedorTitle_estado}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_nomefornecedor}" for="nomefornecedor" />
+                        <p:inputText id="nomefornecedor" value="#{fornecedorController.selected.nomefornecedor}" title="#{bundle.CreateFornecedorTitle_nomefornecedor}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_numeroendereco}" for="numeroendereco" />
+                        <p:inputText id="numeroendereco" value="#{fornecedorController.selected.numeroendereco}" title="#{bundle.CreateFornecedorTitle_numeroendereco}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_razaosocialpessoajuridica}" for="razaosocialpessoajuridica" />
+                        <p:inputText id="razaosocialpessoajuridica" value="#{fornecedorController.selected.razaosocialpessoajuridica}" title="#{bundle.CreateFornecedorTitle_razaosocialpessoajuridica}" />
+                        <p:outputLabel value="#{bundle.CreateFornecedorLabel_telefonecontato}" for="telefonecontato" />
+                        <p:inputText id="telefonecontato" value="#{fornecedorController.selected.telefonecontato}" title="#{bundle.CreateFornecedorTitle_telefonecontato}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fornecedorController.create}" value="#{bundle.Save}" update="display,:FornecedorListForm:datalist,:growl" oncomplete="handleSubmit(args,'FornecedorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FornecedorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
