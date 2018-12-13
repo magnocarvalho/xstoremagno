@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar server/jetty-runner.jar --port $PORT target/*.war
+web:  java -jar lib/payara-micro-5.184.jar --deploy target/xstoremagno-1.0-SNAPSHOT.war --port $PORT
