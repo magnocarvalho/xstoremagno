@@ -8,6 +8,7 @@ package br.edu.utfpr.xstoremagno.bean;
 import br.edu.utfpr.xstoremagno.model.Categoria;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 /**
@@ -17,11 +18,14 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class CategoriaFacade extends AbstractFacade<Categoria> {
 
-    @PersistenceContext(unitName = "br.edu.utfpr_xstoremagno_war_1.0-SNAPSHOTPU")
+    
     private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {
+        if (em == null) {
+            em = Persistence.createEntityManagerFactory(EMNames.EMN1, EMNames.getEMN1Props()).createEntityManager();
+        }
         return em;
     }
 

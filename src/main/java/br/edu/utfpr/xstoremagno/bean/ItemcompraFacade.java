@@ -8,20 +8,23 @@ package br.edu.utfpr.xstoremagno.bean;
 import br.edu.utfpr.xstoremagno.model.Itemcompra;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author magno
  */
-@Stateless
+
 public class ItemcompraFacade extends AbstractFacade<Itemcompra> {
 
-    @PersistenceContext(unitName = "br.edu.utfpr_xstoremagno_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {
+         if (em == null) {
+            em = Persistence.createEntityManagerFactory(EMNames.EMN1, EMNames.getEMN1Props()).createEntityManager();
+        }
         return em;
     }
 
